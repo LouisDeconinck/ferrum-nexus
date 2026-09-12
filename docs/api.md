@@ -286,10 +286,13 @@ _Anonymous request_ — the same response with admin-only fields nulled:
 }
 ```
 
-The two examples differ only in `edge.mode`, `edge.admin_writes_enabled`,
-`edge.namespace_routing.active`, `edge.namespace_routing.serving_scope`,
-`edge.namespace_routing.data_plane_single_namespace`, and the three
-`edge.reconciliation` count fields — all `null` for anonymous callers.
+The two examples differ only in the admin-gated fields — `edge.mode`,
+`edge.admin_writes_enabled`, `edge.namespace_routing.active`,
+`edge.namespace_routing.serving_scope`,
+`edge.namespace_routing.data_plane_single_namespace`,
+`edge.reconciliation.orphaned_consumers`, `edge.reconciliation.orphaned_proxies`
+and `edge.reconciliation.complete` — all `null` for anonymous callers and for
+any signed-in user below `admin`.
 
 Overall `status` is `ok` | `degraded` | `down`; `edge.status` is `ok` |
 `degraded` | `not_ready` | `down`. `edge.reason` says _why_ a `degraded`
